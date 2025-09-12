@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { connectDB } from "../../../../../lib/connectDB";
+import { NextResponse } from "next/server";
 
 export const DELETE = async (request, { params }) => {
   const db = await connectDB();
@@ -8,9 +9,9 @@ export const DELETE = async (request, { params }) => {
     const resp = await bookingsCollection.deleteOne({
       _id: new ObjectId(params.id),
     });
-    return Response.json({ message: "Deleted Booking", response: resp });
+    return NextResponse.json({ message: "Deleted Booking", response: resp });
   } catch (error) {
-    return Response.json({ message: "Something went Wrong." });
+    return NextResponse.json({ message: "Something went Wrong." });
   }
 };
 export const PATCH = async (request, { params }) => {
@@ -29,9 +30,12 @@ export const PATCH = async (request, { params }) => {
       },
       { upsert: true }
     );
-    return Response.json({ message: "Updated the Booking", response: resp });
+    return NextResponse.json({
+      message: "Updated the Booking",
+      response: resp,
+    });
   } catch (error) {
-    return Response.json({ message: "Something went Wrong." });
+    return NextResponse.json({ message: "Something went Wrong." });
   }
 };
 export const GET = async (request, { params }) => {
@@ -41,8 +45,8 @@ export const GET = async (request, { params }) => {
     const resp = await bookingsCollection.findOne({
       _id: new ObjectId(params.id),
     });
-    return Response.json({ message: "Booking Found", response: resp });
+    return NextResponse.json({ message: "Booking Found", response: resp });
   } catch (error) {
-    return Response.json({ message: "Something went Wrong." });
+    return NextResponse.json({ message: "Something went Wrong." });
   }
 };
