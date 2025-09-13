@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "../../../../lib/connectDB";
-import { services } from "../../../../services/getServices";
+// import { services } from "../../../../services/getServices";
 
 export const GET = async () => {
   const db = await connectDB();
