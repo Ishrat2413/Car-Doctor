@@ -15,7 +15,7 @@ const ServiceCard = ({ service }) => {
                 <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
                 <div className="card-actions justify-between items-center">
                     <h2 className='text-center text-primary font-semibold text-xl'>Price: {price}</h2>
-                    <Link href={`services/${_id}`}><button className="btn btn-primary"><BiArrowFromLeft className='text-2xl' /></button></Link>
+                    <Link href={`/services/${_id}`}><button className="btn btn-primary"><BiArrowFromLeft className='text-2xl' /></button></Link>
                 </div>
             </div>
         </div>

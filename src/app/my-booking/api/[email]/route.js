@@ -5,8 +5,9 @@ export const GET = async (request, { params }) => {
   const db = await connectDB();
   const bookingsCollection = db.collection("bookings");
   try {
+    const resolvedParams = await params; 
     const myBookings = await bookingsCollection
-      .find({ email: params.email })
+      .find({ email: resolvedParams.email })
       .toArray();
     return NextResponse.json({ myBookings });
   } catch (error) {

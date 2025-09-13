@@ -9,7 +9,7 @@ const SocialSignIn = () => {
   const router = useRouter();
   const { status } = useSession();
   const searchParams = useSearchParams()
-  const path = searchParams.path("redirect")
+  const path = searchParams.get("redirect")
 
   useEffect(() => {
     if (status === "authenticated") {
